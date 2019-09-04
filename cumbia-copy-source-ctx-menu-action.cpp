@@ -12,7 +12,6 @@ CuCopySourceContextMenuActionPlugin::CuCopySourceContextMenuActionPlugin(QObject
 
 CuCopySourceContextMenuActionPlugin::~CuCopySourceContextMenuActionPlugin()
 {
-    printf("~CuCopySourceContextMenuActionPlugin\n");
     m_actions.clear();
 }
 
