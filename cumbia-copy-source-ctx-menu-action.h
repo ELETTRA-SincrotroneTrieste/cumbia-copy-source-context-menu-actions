@@ -13,6 +13,7 @@ class CuCopySourceContextMenuActionPlugin : public QObject, public CuContextMenu
 
 public:
     explicit CuCopySourceContextMenuActionPlugin(QObject *parent = nullptr);
+    ~CuCopySourceContextMenuActionPlugin();
 
     Q_INTERFACES(CuContextMenuActionsPlugin_I)
 

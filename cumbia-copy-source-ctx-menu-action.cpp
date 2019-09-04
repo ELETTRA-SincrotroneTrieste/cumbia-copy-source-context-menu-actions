@@ -7,16 +7,24 @@
 
 CuCopySourceContextMenuActionPlugin::CuCopySourceContextMenuActionPlugin(QObject *parent) : QObject(parent)
 {
+    m_ctx = nullptr;
 }
 
+CuCopySourceContextMenuActionPlugin::~CuCopySourceContextMenuActionPlugin()
+{
+    printf("~CuCopySourceContextMenuActionPlugin\n");
+    m_actions.clear();
+}
 
 void CuCopySourceContextMenuActionPlugin::setup(QWidget *widget, const CuContext *cuctx)
 {
-    m_ctx = cuctx;
     Q_UNUSED(widget);
-    QAction *a  = new QAction("Copy source", this);
-    connect(a, SIGNAL(triggered()), this, SLOT(onActionTriggered()));
-    m_actions << a;
+    m_ctx = cuctx;
+    if(m_actions.isEmpty()) {
+        QAction *a  = new QAction("Copy source", this);
+        connect(a, SIGNAL(triggered()), this, SLOT(onActionTriggered()));
+        m_actions << a;
+    }
 }
 
 QList<QAction *> CuCopySourceContextMenuActionPlugin::getActions() const
