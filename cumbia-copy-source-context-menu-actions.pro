@@ -4,7 +4,12 @@
 #
 #-------------------------------------------------
 
-include(/usr/local/cumbia-libs/include/cumbia-qtcontrols/cumbia-qtcontrols.pri)
+
+isEmpty(INSTALL_ROOT) {
+    INSTALL_ROOT = /usr/local/cumbia-libs
+}
+
+include($${INSTALL_ROOT}/include/cumbia-qtcontrols/cumbia-qtcontrols.pri)
 
 QT       += core gui
 
