@@ -6,14 +6,16 @@
 #include <QList>
 #include <QObject>
 
-class CuCopySourceContextMenuActionPlugin : public QObject, public CuContextMenuActionsPlugin_I
+class CuViewTrendContextMenuActionPluginPrivate;
+
+class CuViewTrendContextMenuActionPlugin : public QObject, public CuContextMenuActionsPlugin_I
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QGenericPluginFactoryInterface" FILE "cumbia-copy-source-context-menu-actions.json")
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QGenericPluginFactoryInterface" FILE "cumbia-viewtrend-context-menu-actions.json")
 
 public:
-    explicit CuCopySourceContextMenuActionPlugin(QObject *parent = nullptr);
-    ~CuCopySourceContextMenuActionPlugin();
+    explicit CuViewTrendContextMenuActionPlugin(QObject *parent = nullptr);
+    ~CuViewTrendContextMenuActionPlugin();
 
     Q_INTERFACES(CuContextMenuActionsPlugin_I)
 
@@ -27,9 +29,7 @@ protected slots:
     void onActionTriggered();
 
 private:
-    QList<QAction *>m_actions;
-    const CuContext *m_ctx;
-
+    CuViewTrendContextMenuActionPluginPrivate *d;
 };
 
 
