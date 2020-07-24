@@ -11,11 +11,11 @@ isEmpty(INSTALL_ROOT) {
 
 include($${INSTALL_ROOT}/include/cumbia-qtcontrols/cumbia-qtcontrols.pri)
 
-QT       += core gui datavisualization
+QT       += core gui
 
-TARGET = cumbia-viewtrend-context-menu-actions
+TARGET = cumbia-copy-source-context-menu-actions
 TEMPLATE = lib
-CONFIG += plugin debug
+CONFIG += plugin
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -29,13 +29,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    cumbia-viewtrend-ctx-menu-action.cpp \
-    qutrendwidget.cpp
+        cumbia-copy-source-ctx-menu-action.cpp
 
 HEADERS += \
-    cumbia-viewtrend-ctx-menu-action.h \
-    qutrendwidget.h
-DISTFILES += cumbia-viewtrend-context-menu-action.json  \
+        cumbia-copy-source-ctx-menu-action.h
+DISTFILES += cumbia-copy-source-context-menu-actions.json  \
     README.md
 
 unix {
