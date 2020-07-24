@@ -40,7 +40,7 @@ QList<QAction *> CuViewTrendContextMenuActionPlugin::getActions() const
 
 int CuViewTrendContextMenuActionPlugin::order() const
 {
-    return 8;
+    return -10;
 }
 
 void CuViewTrendContextMenuActionPlugin::onActionTriggered()
