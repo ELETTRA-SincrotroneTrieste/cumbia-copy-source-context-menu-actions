@@ -23,6 +23,9 @@ isEmpty(prefix) {
 
 include($${INSTALL_ROOT}/include/cumbia-qtcontrols/cumbia-qtcontrols.pri)
 
+# Here qumbia-plugins libraries will be installed
+    QUMBIA_PLUGINS_LIBDIR=$${INSTALL_ROOT}/lib/qumbia-plugins
+
 QT       += core gui
 
 TARGET = cumbia-copy-source-context-menu-actions
@@ -49,6 +52,6 @@ DISTFILES += cumbia-copy-source-context-menu-actions.json  \
     README.md
 
 unix {
-    target.path = $${DEFINES_CUMBIA_QTCONTROLS_PLUGIN_DIR}
+    target.path = $${QUMBIA_PLUGINS_LIBDIR}
     INSTALLS += target
 }
