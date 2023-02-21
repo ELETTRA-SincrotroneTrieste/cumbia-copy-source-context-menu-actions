@@ -40,11 +40,12 @@ int CuCopySourceContextMenuActionPlugin::order() const
 void CuCopySourceContextMenuActionPlugin::onActionTriggered()
 {
     QClipboard *clipb = qApp->clipboard();
+    const CuContext *ctx = m_ctxi->getContext();
     CuControlsWriterA *w = nullptr;
-    CuControlsReaderA* r = m_ctxi->getReader();
+    CuControlsReaderA* r = ctx->getReader();
     if(r)
         clipb->setText(r->source());
-    else if((w = m_ctxi->getWriter()) != nullptr)
+    else if((w = ctx->getWriter()) != nullptr)
         clipb->setText(w->target());
 
     if(!r && !w)
