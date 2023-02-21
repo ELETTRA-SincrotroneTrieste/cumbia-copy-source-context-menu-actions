@@ -19,7 +19,7 @@ public:
 
     // CuContextMenuActionsPlugin_I interface
 public:
-    void setup(QWidget *widget, const CuContext *cuctx);
+    void setup(QWidget *widget, const CuContextI *cuctx);
     QList<QAction *> getActions() const;
     int order() const;
 
@@ -28,7 +28,7 @@ protected slots:
 
 private:
     QList<QAction *>m_actions;
-    const CuContext *m_ctx;
+    const CuContextI *m_ctxi;
 
 };
 

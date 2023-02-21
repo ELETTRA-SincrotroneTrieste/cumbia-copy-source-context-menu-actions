@@ -3,11 +3,12 @@
 #include <cucontrolsreader_abs.h>
 #include <cucontrolswriter_abs.h>
 #include <QApplication>
+#include <cucontexti.h>
 #include <cucontext.h>
 
 CuCopySourceContextMenuActionPlugin::CuCopySourceContextMenuActionPlugin(QObject *parent) : QObject(parent)
 {
-    m_ctx = nullptr;
+    m_ctxi = nullptr;
 }
 
 CuCopySourceContextMenuActionPlugin::~CuCopySourceContextMenuActionPlugin()
@@ -15,10 +16,10 @@ CuCopySourceContextMenuActionPlugin::~CuCopySourceContextMenuActionPlugin()
     m_actions.clear();
 }
 
-void CuCopySourceContextMenuActionPlugin::setup(QWidget *widget, const CuContext *cuctx)
+void CuCopySourceContextMenuActionPlugin::setup(QWidget *widget, const CuContextI *cuctx)
 {
     Q_UNUSED(widget);
-    m_ctx = cuctx;
+    m_ctxi = cuctx;
     if(m_actions.isEmpty()) {
         QAction *a  = new QAction("Copy source", this);
         connect(a, SIGNAL(triggered()), this, SLOT(onActionTriggered()));
@@ -40,10 +41,10 @@ void CuCopySourceContextMenuActionPlugin::onActionTriggered()
 {
     QClipboard *clipb = qApp->clipboard();
     CuControlsWriterA *w = nullptr;
-    CuControlsReaderA* r = m_ctx->getReader();
+    CuControlsReaderA* r = m_ctxi->getContext()->getReader();
     if(r)
         clipb->setText(r->source());
-    else if((w = m_ctx->getWriter()) != nullptr)
+    else if((w = m_ctxi->getContext()->getWriter()) != nullptr)
         clipb->setText(w->target());
 
     if(!r && !w)
