@@ -1,6 +1,4 @@
 #include "dragevent.h"
-#include "ui_dragevent.h"
-
 // cumbia
 #include <cumbiapool.h>
 #include <cuserviceprovider.h>
